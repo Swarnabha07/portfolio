@@ -41,7 +41,33 @@ export const lightingVariants = {
     },
   ],
 
-  techStack: [
+  skills: [
+    // Main centered glow behind the technology grid
+    {
+      className: "top-10 left-1/2 -translate-x-1/2",
+      size: "44rem",
+      opacity: 0.075,
+      blur: "300px",
+    },
+
+    // Supporting left glow
+    {
+      className: "bottom-[-8rem] left-[-8rem]",
+      size: "30rem",
+      opacity: 0.05,
+      blur: "260px",
+    },
+
+    // Supporting right glow
+    {
+      className: "top-24 right-[-8rem]",
+      size: "28rem",
+      opacity: 0.045,
+      blur: "240px",
+    },
+  ],
+
+  toolkit: [
     // Main centered glow behind the technology grid
     {
       className: "top-10 left-1/2 -translate-x-1/2",

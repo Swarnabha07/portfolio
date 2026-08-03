@@ -110,7 +110,9 @@ export default function CardTilt({
           background: spotlight,
         }}
       />
-      <div className="relative z-10 flex flex-col items-center">{children}</div>
+      <div className="relative z-10 flex flex-col items-center h-full">
+        {children}
+      </div>
     </motion.div>
   );
 }

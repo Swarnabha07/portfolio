@@ -120,13 +120,13 @@ export const TOOLKIT = [
 
   {
     id: "realtime",
-    title: "Real-Time & Jobs",
+    title: "Real-Time & Automation",
     icon: Workflow,
 
     items: [
       {
         name: "Server-Sent Events",
-        description: "Real-time notifications",
+        description: "Real-time server updates",
       },
       {
         name: "BullMQ + Redis",
@@ -134,7 +134,7 @@ export const TOOLKIT = [
       },
       {
         name: "cron-job.org",
-        description: "Scheduled post publishing",
+        description: "Scheduled task automation",
       },
     ],
   },
@@ -147,7 +147,7 @@ export const TOOLKIT = [
     items: [
       {
         name: "Supabase",
-        description: "Signed URLs for secure asset access",
+        description: "Secure file storage",
       },
     ],
   },

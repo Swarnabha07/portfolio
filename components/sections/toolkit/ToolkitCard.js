@@ -4,9 +4,21 @@ import { motion } from "framer-motion";
 
 import CardTilt from "@/components/common/CardTilt";
 import ToolkitItem from "./ToolkitItem";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function ToolkitCard({ category, index }) {
   const Icon = category.icon;
+
+  const { resolvedTheme } = useTheme();
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && resolvedTheme === "dark";
 
   return (
     <motion.article
@@ -20,7 +32,7 @@ export default function ToolkitCard({ category, index }) {
       }}
     >
       <CardTilt
-        className="
+        className={`
     group
     relative
 
@@ -34,12 +46,13 @@ export default function ToolkitCard({ category, index }) {
     rounded-3xl
     border
     border-border
+    ${isDark ? "bg-surface/60" : "hover:shadow-xl"}
     bg-surface/60
     p-8
     backdrop-blur-sm
     transition-all
     duration-300
-  "
+  `}
         scale={1.015}
       >
         {/* Header */}

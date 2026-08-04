@@ -3,7 +3,20 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+
 export default function ToolkitItem({ item }) {
+  const { resolvedTheme } = useTheme();
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && resolvedTheme === "dark";
+
   return (
     <motion.li
       whileHover="hover"
@@ -11,7 +24,7 @@ export default function ToolkitItem({ item }) {
         duration: 0.2,
         ease: "easeOut",
       }}
-      className="
+      className={`
         group
         flex
         items-start
@@ -24,9 +37,9 @@ export default function ToolkitItem({ item }) {
         transition-colors
         duration-200
 
-        hover:bg-white/[0.03]
-        dark:hover:bg-white/[0.03]
-      "
+        ${isDark ? "hover:bg-white/[0.03]" : "hover:bg-zinc-100"}
+        
+      `}
     >
       {/* Icon */}
 

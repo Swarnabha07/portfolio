@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SECTION_IDS = [
   "home",
@@ -15,41 +15,74 @@ const SECTION_IDS = [
 export default function useActiveSection() {
   const [activeSection, setActiveSection] = useState("home");
 
+  const activeRef = useRef("home");
+  const ticking = useRef(false);
+
   useEffect(() => {
-    const sections = SECTION_IDS
-      .map((id) => document.getElementById(id))
-      .filter(Boolean);
+    const sections = SECTION_IDS.map((id) =>
+      document.getElementById(id),
+    ).filter(Boolean);
 
     if (!sections.length) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) =>
-              b.intersectionRatio - a.intersectionRatio
-          );
+    function updateActiveSection() {
+      /*
+       * Position of the "active line".
+       * Slightly below the navbar gives the most natural feeling.
+       */
+      const marker = 120;
 
-        if (!visible.length) return;
+      let current = sections[0].id;
 
-        const id = visible[0].target.id;
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
 
-        setActiveSection((prev) =>
-          prev === id ? prev : id
-        );
-      },
-      {
-        rootMargin: "-30% 0px -55% 0px",
-        threshold: [0.15, 0.3, 0.45, 0.6],
+        if (rect.top <= marker && rect.bottom >= marker) {
+          current = section.id;
+          break;
+        }
       }
-    );
 
-    sections.forEach((section) =>
-      observer.observe(section)
-    );
+      /*
+       * If we're at the very bottom of the page,
+       * always activate the last section.
+       */
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2
+      ) {
+        current = sections[sections.length - 1].id;
+      }
 
-    return () => observer.disconnect();
+      if (activeRef.current !== current) {
+        activeRef.current = current;
+        setActiveSection(current);
+      }
+    }
+
+    function onScroll() {
+      if (ticking.current) return;
+
+      ticking.current = true;
+
+      requestAnimationFrame(() => {
+        updateActiveSection();
+        ticking.current = false;
+      });
+    }
+
+    updateActiveSection();
+
+    window.addEventListener("scroll", onScroll, {
+      passive: true,
+    });
+
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", updateActiveSection);
+    };
   }, []);
 
   return activeSection;

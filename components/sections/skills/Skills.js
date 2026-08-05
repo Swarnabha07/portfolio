@@ -12,7 +12,7 @@ export default function Skills() {
         relative
         isolate
         overflow-hidden
-        scroll-mt-32
+        scroll-mt-10
         py-24
         sm:py-28
         lg:py-32

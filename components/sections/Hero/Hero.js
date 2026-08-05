@@ -13,7 +13,7 @@ export default function Hero() {
         min-h-screen
         items-center
         overflow-clip
-        scroll-mt-32
+        scroll-mt-10
         bg-background
         pt-32
         pb-20

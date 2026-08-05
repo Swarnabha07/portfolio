@@ -12,7 +12,7 @@ export default function Toolkit() {
         relative
         isolate
         overflow-hidden
-        scroll-mt-32
+        scroll-mt-10
 
         py-24
         sm:py-28

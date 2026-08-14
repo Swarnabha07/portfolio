@@ -17,21 +17,6 @@ export default function AboutText() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="max-w-2xl"
     >
-      {/* Section Label */}
-      <span
-        className="
-          inline-block
-          text-xs
-          md:text-lg
-          font-semibold
-          uppercase
-          tracking-[0.28em]
-          text-text-muted
-        "
-      >
-        About
-      </span>
-
       {/* Paragraphs */}
       <div className="mt-8 space-y-6">
         <p

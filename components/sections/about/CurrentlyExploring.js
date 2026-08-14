@@ -31,7 +31,7 @@ export default function CurrentlyExploring() {
       className={`
         rounded-2xl
         border
-        bg-surface/50
+        bg-surface/60
         p-8
         backdrop-blur-sm
         lg:mt-14

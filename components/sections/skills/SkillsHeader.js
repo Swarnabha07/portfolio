@@ -14,7 +14,6 @@ export default function SkillsHeader() {
       }}
       className="
         mb-16
-  max-w-3xl
       "
     >
       {/* Section Label */}
@@ -33,6 +32,9 @@ export default function SkillsHeader() {
       >
         Skills
       </span>
+
+      {/* Section Divider */}
+      <div aria-hidden="true" className="mt-5 h-px w-full bg-border" />
 
       {/* Description */}
 

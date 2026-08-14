@@ -1,6 +1,6 @@
 export default function ToolkitHeader() {
   return (
-    <div className="mb-14 max-w-3xl lg:mb-16">
+    <div className="mb-14 lg:mb-16">
       {/* Section Label */}
 
       <span
@@ -16,6 +16,9 @@ export default function ToolkitHeader() {
       >
         Developer's Toolkit
       </span>
+
+      {/* Section Divider */}
+      <div aria-hidden="true" className="mt-5 h-px w-full bg-border" />
 
       {/* Supporting Text */}
 

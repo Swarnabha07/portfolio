@@ -30,9 +30,23 @@ export default function About() {
           lg:px-12
         "
       >
-        <h2 id="about-heading" className="sr-only">
+        {/* Section Label */}
+        <span
+          className="
+          inline-block
+          text-xs
+          md:text-lg
+          font-semibold
+          uppercase
+          tracking-[0.28em]
+          text-text-muted
+        "
+        >
           About
-        </h2>
+        </span>
+
+        {/* Section Divider */}
+        <div aria-hidden="true" className="mt-5 h-px w-full bg-border" />
 
         <AboutGrid />
       </div>

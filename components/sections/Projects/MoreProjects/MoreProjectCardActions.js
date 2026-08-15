@@ -1,8 +1,9 @@
-import { ArrowUpRight, GitFork } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 
 export default function ProjectCardActions({ github, liveDemo }) {
   return (
-    <div className="flex flex-wrap items-center gap-4">
+    <div className="flex flex-wrap items-center gap-5">
       {/* GitHub */}
 
       <a
@@ -24,7 +25,7 @@ export default function ProjectCardActions({ github, liveDemo }) {
           hover:text-text-primary
         "
       >
-        <GitFork size={15} strokeWidth={2} />
+        <FaGithub size={15} strokeWidth={2} />
         GitHub
       </a>
 

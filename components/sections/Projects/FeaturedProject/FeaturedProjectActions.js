@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, GitFork } from "lucide-react";
+import { ArrowUpRight, BookOpen } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 
 export default function FeaturedProjectActions({
   caseStudy,
@@ -37,7 +38,7 @@ export default function FeaturedProjectActions({
         "
       >
         View Case Study
-        <ArrowUpRight size={16} strokeWidth={2} />
+        <BookOpen size={16} strokeWidth={2} />
       </Link>
 
       {/* GitHub */}
@@ -74,7 +75,7 @@ export default function FeaturedProjectActions({
           hover:bg-surface
         "
       >
-        <GitFork size={16} strokeWidth={2} />
+        <FaGithub size={16} strokeWidth={2} />
         GitHub
       </a>
 

@@ -4,7 +4,7 @@ export const FEATURED_PROJECT = {
   title: "StoryHub",
 
   overview:
-    "A production-oriented full-stack publishing platform focused on scalable architecture, secure authentication, real-time interactions, and a modern writing experience.",
+    "A full-stack blogging platform that combines content publishing, social interaction, and production-grade web engineering to deliver a robust experience for writers and readers.",
 
   image: "/images/projects/storyhub/coverNew.webp",
 

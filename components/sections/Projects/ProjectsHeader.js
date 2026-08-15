@@ -6,8 +6,8 @@ export default function ProjectsHeader() {
         id="projects-heading"
         className="
           inline-block
-          text-xs
-          md:text-lg
+          text-sm
+          md:text-xl
           font-semibold
           uppercase
           tracking-[0.28em]

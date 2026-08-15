@@ -5,7 +5,7 @@ export const PROJECTS = [
     title: "Spendee",
 
     description:
-      "Personal expense tracking application with interactive analytics, categorization and visual reporting.",
+      "A responsive expense tracking application for managing income and expenses, with transaction search, interactive spending analytics, and categorized financial insights.",
 
     image: "/images/projects/expense-tracker.webp",
 
@@ -20,7 +20,7 @@ export const PROJECTS = [
     title: "MyTask",
 
     description:
-      "Task management application featuring voice input, progress tracking, gamification and clean productivity workflows.",
+      "A responsive task management application with voice input, productivity tracking, gamification, and intelligent date and time input for streamlined task organization",
 
     image: "/images/projects/todo-app.webp",
 

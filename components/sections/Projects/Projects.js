@@ -22,7 +22,7 @@ export default function Projects() {
         </div>
 
         {/* More Projects */}
-        <div className="mt-20 sm:mt-24">
+        <div className="mt-36 sm:mt-32">
           <MoreProjects projects={PROJECTS} />
         </div>
       </div>

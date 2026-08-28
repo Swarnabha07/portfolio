@@ -1,0 +1,514 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+export default function FutureRoadmap({ section }) {
+  const [recommendation, messaging] = section.items;
+
+  return (
+    <section
+      aria-labelledby="future-roadmap-heading"
+      className="
+        relative
+        overflow-hidden
+        py-28
+
+        sm:py-32
+
+        lg:py-40
+      "
+    >
+      <div
+        className="
+          mx-auto
+          w-full
+          max-w-[110rem]
+          px-6
+          sm:px-8
+          lg:px-10
+        "
+      >
+        {/* Section Header */}
+
+        <div className="max-w-3xl">
+          <h2
+            id="future-roadmap-heading"
+            className="
+              text-3xl
+              font-semibold
+              tracking-tight
+              text-text-primary
+
+              sm:text-4xl
+
+              lg:text-5xl
+            "
+          >
+            {section.title}
+          </h2>
+
+          <p
+            className="
+              mt-5
+              max-w-2xl
+              text-base
+              leading-7
+              text-text-secondary
+
+              sm:text-lg
+              sm:leading-8
+            "
+          >
+            Where StoryHub could evolve next.
+          </p>
+        </div>
+
+        {/* Future Directions */}
+
+        <div
+          className="
+            relative
+            mt-20
+
+            sm:mt-24
+
+            lg:mt-32
+          "
+        >
+          {/* Central Glow */}
+
+          <div
+            aria-hidden="true"
+            className="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-0
+              z-0
+
+              h-48
+              w-48
+
+              -translate-x-1/2
+              -translate-y-1/2
+
+              rounded-full
+
+              bg-white/[0.045]
+
+              blur-[100px]
+
+              sm:h-64
+              sm:w-64
+            "
+          />
+
+          {/* Origin */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              scale: 0.96,
+            }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.4,
+            }}
+            transition={{
+              duration: 0.5,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="
+              relative
+              z-10
+              flex
+              justify-center
+            "
+          >
+            <div
+              className="
+                relative
+                flex
+                h-16
+                items-center
+                justify-center
+
+                rounded-full
+
+                border
+                border-white/[0.12]
+
+                bg-white/[0.035]
+
+                px-7
+
+                text-sm
+                font-medium
+                tracking-wide
+                text-text-primary
+
+                shadow-[0_20px_70px_rgba(0,0,0,0.22)]
+
+                backdrop-blur-xl
+
+                sm:h-[4.5rem]
+                sm:px-9
+                sm:text-base
+              "
+            >
+              StoryHub
+              {/* Origin Glow */}
+              <div
+                aria-hidden="true"
+                className="
+                  pointer-events-none
+                  absolute
+                  inset-0
+                  -z-10
+
+                  rounded-full
+
+                  bg-white/[0.04]
+
+                  blur-xl
+                "
+              />
+            </div>
+          </motion.div>
+
+          {/* Branching Structure */}
+
+          <div
+            aria-hidden="true"
+            className="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-16
+
+              h-24
+              w-full
+
+              -translate-x-1/2
+
+              sm:top-[4.5rem]
+              sm:h-28
+            "
+          >
+            {/* Vertical stem */}
+
+            <motion.div
+              initial={{
+                scaleY: 0,
+              }}
+              whileInView={{
+                scaleY: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.5,
+              }}
+              transition={{
+                duration: 0.45,
+                delay: 0.15,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="
+                absolute
+                left-1/2
+                top-0
+                h-1/2
+                w-px
+                origin-top
+                -translate-x-1/2
+                bg-border
+              "
+            />
+
+            {/* Horizontal branch */}
+
+            <motion.div
+              initial={{
+                scaleX: 0,
+              }}
+              whileInView={{
+                scaleX: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.5,
+              }}
+              transition={{
+                duration: 0.55,
+                delay: 0.3,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="
+                absolute
+                left-[12.5%]
+                right-[12.5%]
+                top-1/2
+                h-px
+                origin-center
+                bg-border
+              "
+            />
+
+            {/* Left branch */}
+
+            <motion.div
+              initial={{
+                scaleY: 0,
+              }}
+              whileInView={{
+                scaleY: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.5,
+              }}
+              transition={{
+                duration: 0.35,
+                delay: 0.7,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="
+                absolute
+                left-[12.5%]
+                top-1/2
+                h-1/2
+                w-px
+                origin-top
+                bg-border
+              "
+            />
+
+            {/* Right branch */}
+
+            <motion.div
+              initial={{
+                scaleY: 0,
+              }}
+              whileInView={{
+                scaleY: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.5,
+              }}
+              transition={{
+                duration: 0.35,
+                delay: 0.7,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="
+                absolute
+                right-[12.5%]
+                top-1/2
+                h-1/2
+                w-px
+                origin-top
+                bg-border
+              "
+            />
+          </div>
+
+          {/* Direction Content */}
+
+          <div
+            className="
+              relative
+              z-10
+              mt-24
+
+              grid
+              grid-cols-1
+              gap-16
+
+              sm:mt-28
+              sm:grid-cols-2
+              sm:gap-12
+
+              lg:mt-32
+              lg:gap-24
+            "
+          >
+            {/* Recommendation */}
+
+            <motion.article
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              transition={{
+                duration: 0.5,
+                delay: 0.35,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="
+                relative
+                px-2
+                pt-4
+
+                sm:px-4
+                sm:pt-6
+              "
+            >
+              {/* Connection Point */}
+
+              <div
+                aria-hidden="true"
+                className="
+                  absolute
+                  left-1/2
+                  top-0
+
+                  h-2
+                  w-2
+
+                  -translate-x-1/2
+                  -translate-y-1/2
+
+                  rounded-full
+
+                  bg-text-primary
+
+                  shadow-[0_0_20px_rgba(255,255,255,0.35)]
+                "
+              />
+
+              <div className="max-w-xl">
+                <h3
+                  className="
+                    text-2xl
+                    font-semibold
+                    tracking-tight
+                    text-text-primary
+
+                    sm:text-3xl
+
+                    lg:text-4xl
+                  "
+                >
+                  {recommendation.title}
+                </h3>
+
+                <p
+                  className="
+                    mt-6
+                    text-base
+                    leading-7
+                    text-text-secondary
+
+                    sm:mt-7
+                    sm:text-lg
+                    sm:leading-8
+                  "
+                >
+                  {recommendation.description}
+                </p>
+              </div>
+            </motion.article>
+
+            {/* Messaging */}
+
+            <motion.article
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              transition={{
+                duration: 0.5,
+                delay: 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="
+                relative
+                px-2
+                pt-4
+
+                sm:px-4
+                sm:pt-6
+              "
+            >
+              {/* Connection Point */}
+
+              <div
+                aria-hidden="true"
+                className="
+                  absolute
+                  left-1/2
+                  top-0
+
+                  h-2
+                  w-2
+
+                  -translate-x-1/2
+                  -translate-y-1/2
+
+                  rounded-full
+
+                  bg-text-primary
+
+                  shadow-[0_0_20px_rgba(255,255,255,0.35)]
+                "
+              />
+
+              <div className="max-w-xl">
+                <h3
+                  className="
+                    text-2xl
+                    font-semibold
+                    tracking-tight
+                    text-text-primary
+
+                    sm:text-3xl
+
+                    lg:text-4xl
+                  "
+                >
+                  {messaging.title}
+                </h3>
+
+                <p
+                  className="
+                    mt-6
+                    text-base
+                    leading-7
+                    text-text-secondary
+
+                    sm:mt-7
+                    sm:text-lg
+                    sm:leading-8
+                  "
+                >
+                  {messaging.description}
+                </p>
+              </div>
+            </motion.article>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

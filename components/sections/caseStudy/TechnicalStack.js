@@ -1,10 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 
 export default function TechnicalStack({ section }) {
   const [activeCategory, setActiveCategory] = useState(0);
   const [activeItem, setActiveItem] = useState(0);
+
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && resolvedTheme === "dark";
 
   const categories = section.categories;
   const category = categories[activeCategory];
@@ -15,34 +26,57 @@ export default function TechnicalStack({ section }) {
     setActiveItem(0);
   };
 
+  const revealVariants = {
+    hidden: {
+      opacity: 0,
+      y: 28,
+    },
+
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   return (
-    <section
+    <motion.section
       aria-labelledby="technical-stack-heading"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{
+        once: true,
+        amount: 0.15,
+      }}
       className="
         relative
-        py-24
-        sm:py-28
+        py-20
+        sm:py-24
         lg:py-32
-        my-16
+        lg:my-32
       "
     >
       <div
         className="
-          mx-auto
-          w-full
-          max-w-[110rem]
-          px-6
-          sm:px-8
-          lg:px-10
-        "
+  mx-auto
+  w-full
+  min-w-0
+  max-w-[100rem]
+  px-5
+  sm:px-8
+  lg:px-10
+"
       >
         {/* Section Header */}
 
-        <div className="max-w-2xl">
+        <motion.div variants={revealVariants} className="max-w-2xl">
           <h2
             id="technical-stack-heading"
             className="
-              text-3xl
+              text-2xl
               font-semibold
               tracking-tight
               text-text-primary
@@ -54,75 +88,64 @@ export default function TechnicalStack({ section }) {
           >
             {section.title}
           </h2>
-        </div>
+        </motion.div>
 
         {/* Stack Explorer */}
 
-        <div
+        <motion.div
+          variants={revealVariants}
+          transition={{
+            duration: 0.75,
+            delay: 0.12,
+            ease: [0.22, 1, 0.36, 1],
+          }}
           className="
-            relative
-            mt-12
-            grid
-            min-h-[620px]
-            overflow-hidden
-            rounded-3xl
-            border
-            border-white/[0.08]
-            bg-white/[0.02]
-            shadow-[0_30px_100px_rgba(0,0,0,0.20)]
-            backdrop-blur-xl
+  relative
+  mt-10
+  grid
+  w-full
+  min-w-0
+  min-h-0
+  grid-cols-1
+  overflow-hidden
+  rounded-3xl
 
-            sm:mt-16
+  sm:mt-14
 
-            lg:mt-20
-            lg:grid-cols-[280px_1fr]
-          "
+  lg:mt-20
+  lg:min-h-[620px]
+  lg:grid-cols-[280px_minmax(0,1fr)]
+"
         >
-          {/* Ambient Glow */}
-
-          <div
-            aria-hidden="true"
-            className="
-              pointer-events-none
-              absolute
-              left-[35%]
-              top-1/2
-              z-0
-              h-[55%]
-              w-[45%]
-              -translate-x-1/2
-              -translate-y-1/2
-              rounded-full
-              bg-white/[0.035]
-              blur-[120px]
-            "
-          />
-
           {/* Category Navigation */}
 
           <aside
-            className="
+            className={`
               relative
               z-10
+              w-full
               border-b
-              border-white/[0.08]
-              p-5
+              ${isDark ? "border-white/[0.08]" : "border-black/[0.08]"}
+              p-4
 
-              sm:p-7
+              sm:p-6
 
               lg:border-b-0
               lg:border-r
               lg:p-8
-          "
+            `}
           >
             <div
               className="
-                mb-5
-                text-xs
+                mb-4
+                text-[10px]
+                sm:text-xs
                 font-medium
                 uppercase
                 tracking-[0.18em]
                 text-text-muted
+
+                sm:mb-5
               "
             >
               Categories
@@ -132,6 +155,7 @@ export default function TechnicalStack({ section }) {
               aria-label="Technical stack categories"
               className="
                 flex
+                w-full
                 gap-2
                 overflow-x-auto
                 pb-1
@@ -154,7 +178,7 @@ export default function TechnicalStack({ section }) {
                       relative
                       shrink-0
                       rounded-xl
-                      px-4
+                      px-3.5
                       py-3
                       text-left
                       text-sm
@@ -162,12 +186,18 @@ export default function TechnicalStack({ section }) {
                       transition-all
                       duration-300
 
+                      sm:px-4
+
                       lg:w-full
 
                       ${
                         isActive
-                          ? "bg-white/[0.07] text-text-primary"
-                          : "text-text-muted hover:bg-white/[0.035] hover:text-text-secondary"
+                          ? isDark
+                            ? "bg-white/[0.07] text-text-primary"
+                            : "bg-black/[0.05] text-text-primary"
+                          : isDark
+                            ? "text-text-muted hover:bg-white/[0.035] hover:text-text-secondary"
+                            : "text-text-muted hover:bg-black/[0.035] hover:text-text-secondary"
                       }
                     `}
                   >
@@ -219,29 +249,35 @@ export default function TechnicalStack({ section }) {
               relative
               z-10
               flex
+              w-full
               min-w-0
               flex-col
-              p-6
+              p-5
 
-              sm:p-8
+              sm:p-7
 
               lg:p-12
-          "
+            "
           >
             {/* Category Header */}
 
             <div
               className="
                 flex
+                w-full
+                min-w-0
                 items-end
                 justify-between
-                gap-6
+                gap-4
+
+                sm:gap-6
               "
             >
-              <div>
+              <div className="min-w-0">
                 <span
                   className="
-                    text-xs
+                    text-[10px]
+                    sm:text-xs
                     font-medium
                     uppercase
                     tracking-[0.18em]
@@ -254,12 +290,14 @@ export default function TechnicalStack({ section }) {
                 <h3
                   className="
                     mt-2
-                    text-2xl
+                    text-lg
                     font-semibold
                     tracking-tight
                     text-text-primary
 
-                    sm:text-3xl
+                    sm:text-2xl
+
+                    lg:text-3xl
                   "
                 >
                   {category.title}
@@ -268,9 +306,12 @@ export default function TechnicalStack({ section }) {
 
               <span
                 className="
-                  text-sm
+                  shrink-0
+                  text-[10px]
                   tabular-nums
                   text-text-muted
+
+                  sm:text-sm
                 "
               >
                 {String(activeItem + 1).padStart(2, "0")} /{" "}
@@ -281,16 +322,20 @@ export default function TechnicalStack({ section }) {
             {/* Technology List */}
 
             <div
-              className="
-                mt-8
+              className={`
+                mt-6
                 grid
+                w-full
                 gap-2
                 border-t
-                border-white/[0.08]
+                ${isDark ? "border-white/[0.08]" : "border-black/[0.08]"}
                 pt-3
 
+                sm:mt-7
                 sm:grid-cols-2
-              "
+
+                lg:mt-8
+              `}
             >
               {category.items.map((technology, index) => {
                 const isActive = index === activeItem;
@@ -304,17 +349,29 @@ export default function TechnicalStack({ section }) {
                     className={`
                       group
                       relative
+                      w-full
+                      min-w-0
                       rounded-xl
                       px-4
-                      py-4
+                      py-3.5
                       text-left
                       transition-all
                       duration-300
 
-                      ${isActive ? "bg-white/[0.06]" : "hover:bg-white/[0.025]"}
+                      sm:py-4
+
+                      ${
+                        isActive
+                          ? isDark
+                            ? "bg-white/[0.06]"
+                            : "bg-black/[0.05]"
+                          : isDark
+                            ? "hover:bg-white/[0.025]"
+                            : "hover:bg-black/[0.025]"
+                      }
                     `}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex min-w-0 items-center gap-3">
                       <span
                         className={`
                           h-1.5
@@ -334,7 +391,9 @@ export default function TechnicalStack({ section }) {
 
                       <span
                         className={`
-                          text-sm
+                          min-w-0
+                          text-xs
+                          sm:text-sm
                           font-medium
                           transition-colors
                           duration-300
@@ -357,26 +416,31 @@ export default function TechnicalStack({ section }) {
             {/* Active Technology Detail */}
 
             <div
-              className="
+              className={`
                 relative
-                mt-auto
+                mt-8
+                w-full
+                min-w-0
                 overflow-hidden
                 rounded-2xl
                 border
-                border-white/[0.08]
-                bg-white/[0.025]
-                p-6
+                ${isDark ? "border-white/[0.08]" : "border-black/[0.08]"}
+                ${isDark ? "bg-white/[0.025]" : "bg-black/[0.02]"}
 
-                sm:p-8
+                p-5
+
+                sm:mt-10
+                sm:p-7
 
                 lg:mt-12
-              "
+                lg:p-8
+              `}
             >
               {/* Detail Glow */}
 
               <div
                 aria-hidden="true"
-                className="
+                className={`
                   pointer-events-none
                   absolute
                   -right-20
@@ -384,15 +448,16 @@ export default function TechnicalStack({ section }) {
                   h-48
                   w-48
                   rounded-full
-                  bg-white/[0.045]
+                  ${isDark ? "bg-white/[0.045]" : "bg-black/[0.035]"}
                   blur-[70px]
-                "
+                `}
               />
 
-              <div className="relative">
+              <div className="relative min-w-0">
                 <span
                   className="
-                    text-xs
+                    text-[10px]
+                    sm:text-xs
                     font-medium
                     uppercase
                     tracking-[0.18em]
@@ -405,12 +470,14 @@ export default function TechnicalStack({ section }) {
                 <h4
                   className="
                     mt-3
-                    text-2xl
+                    text-lg
                     font-semibold
                     tracking-tight
                     text-text-primary
 
-                    sm:text-3xl
+                    sm:text-2xl
+
+                    lg:text-3xl
                   "
                 >
                   {item.name}
@@ -418,14 +485,18 @@ export default function TechnicalStack({ section }) {
 
                 <p
                   className="
-                    mt-4
+                    mt-3
                     max-w-2xl
-                    text-base
-                    leading-7
+                    text-xs
+                    leading-6
                     text-text-secondary
 
-                    sm:text-lg
-                    sm:leading-8
+                    sm:mt-4
+                    sm:text-base
+                    sm:leading-7
+
+                    lg:text-lg
+                    lg:leading-8
                   "
                 >
                   {item.description}
@@ -433,8 +504,8 @@ export default function TechnicalStack({ section }) {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

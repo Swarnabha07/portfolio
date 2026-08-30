@@ -7,6 +7,8 @@ export const CASE_STUDY_STORYHUB = {
     overview:
       "StoryHub is a full-stack publishing platform built to bring writing, discovery, and community interaction together in one cohesive experience. Beyond core blogging functionality, the project focuses on building a scalable and reliable product with thoughtful UX, modern architecture, and production-ready engineering practices.",
     image: "/images/projects/storyhub/Storhub_Project_Overview.webp",
+    github: "https://github.com/Swarnabha07/StoryHub",
+    liveDemo: "https://storyhub-seven.vercel.app/",
   },
 
   sections: {
@@ -454,7 +456,7 @@ export const CASE_STUDY_STORYHUB = {
           ],
 
           takeaway:
-            "Real lesson: designing a feature means mapping its effects across the existing system, not just building its API and UI.",
+            "Real lesson: Designing a feature means mapping its effects across the existing system, not just building its API and UI.",
         },
 
         {
@@ -467,7 +469,7 @@ export const CASE_STUDY_STORYHUB = {
           ],
 
           takeaway:
-            "Real lesson: once work becomes asynchronous, it needs its own architecture for retries, rate limits, temporary state, and failure handling.",
+            "Real lesson: Once work becomes asynchronous, it needs its own architecture for retries, rate limits, temporary state, and failure handling.",
         },
 
         {
@@ -481,7 +483,7 @@ export const CASE_STUDY_STORYHUB = {
           ],
 
           takeaway:
-            "Real lesson: security isn't a final checklist applied to routes; you have to trace where untrusted data enters, how it changes, where it is stored, and where it eventually becomes trusted or rendered.",
+            "Real lesson: Security isn't a final checklist applied to routes; you have to trace where untrusted data enters, how it changes, where it is stored, and where it eventually becomes trusted or rendered.",
         },
 
         {
@@ -492,7 +494,7 @@ export const CASE_STUDY_STORYHUB = {
           ],
 
           takeaway:
-            "Real lesson: an implementation that works locally isn't necessarily a production solution. Hosting limits, third-party quotas, timezone differences, external-service failures, and operational constraints have to become part of the architecture—not problems discovered after deployment.",
+            "Real lesson: An implementation that works locally isn't necessarily a production solution. Hosting limits, third-party quotas, timezone differences, external-service failures, and operational constraints have to become part of the architecture—not problems discovered after deployment.",
         },
       ],
     },

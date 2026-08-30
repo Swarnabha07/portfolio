@@ -22,7 +22,7 @@ export default function FutureRoadmap({ section }) {
         className="
           mx-auto
           w-full
-          max-w-[110rem]
+          max-w-[100rem]
           px-6
           sm:px-8
           lg:px-10
@@ -30,11 +30,29 @@ export default function FutureRoadmap({ section }) {
       >
         {/* Section Header */}
 
-        <div className="max-w-3xl">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.3,
+          }}
+          transition={{
+            duration: 0.5,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="max-w-3xl"
+        >
           <h2
             id="future-roadmap-heading"
             className="
-              text-3xl
+              text-2xl
               font-semibold
               tracking-tight
               text-text-primary
@@ -51,7 +69,7 @@ export default function FutureRoadmap({ section }) {
             className="
               mt-5
               max-w-2xl
-              text-base
+              text-sm
               leading-7
               text-text-secondary
 
@@ -61,7 +79,7 @@ export default function FutureRoadmap({ section }) {
           >
             Where StoryHub could evolve next.
           </p>
-        </div>
+        </motion.div>
 
         {/* Future Directions */}
 
@@ -75,34 +93,6 @@ export default function FutureRoadmap({ section }) {
             lg:mt-32
           "
         >
-          {/* Central Glow */}
-
-          <div
-            aria-hidden="true"
-            className="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-0
-              z-0
-
-              h-48
-              w-48
-
-              -translate-x-1/2
-              -translate-y-1/2
-
-              rounded-full
-
-              bg-white/[0.045]
-
-              blur-[100px]
-
-              sm:h-64
-              sm:w-64
-            "
-          />
-
           {/* Origin */}
 
           <motion.div
@@ -120,6 +110,7 @@ export default function FutureRoadmap({ section }) {
             }}
             transition={{
               duration: 0.5,
+              delay: 0.1,
               ease: [0.22, 1, 0.36, 1],
             }}
             className="
@@ -178,6 +169,24 @@ export default function FutureRoadmap({ section }) {
                 "
               />
             </div>
+            {/* Mobile / Tablet Connector */}
+
+            <div
+              aria-hidden="true"
+              className="
+      absolute
+      left-1/2
+      top-full
+      h-20
+      w-px
+      -translate-x-1/2
+      bg-border
+
+      sm:h-24
+
+      lg:hidden
+    "
+            />
           </motion.div>
 
           {/* Branching Structure */}
@@ -185,21 +194,24 @@ export default function FutureRoadmap({ section }) {
           <div
             aria-hidden="true"
             className="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-16
+    pointer-events-none
+    absolute
+    left-1/2
+    top-16
 
-              h-24
-              w-full
+    hidden
+    h-24
+    w-full
 
-              -translate-x-1/2
+    -translate-x-1/2
 
-              sm:top-[4.5rem]
-              sm:h-28
-            "
+    sm:top-[4.5rem]
+    sm:h-28
+
+    lg:block
+  "
           >
-            {/* Vertical stem */}
+            {/* Vertical Stem */}
 
             <motion.div
               initial={{
@@ -214,7 +226,7 @@ export default function FutureRoadmap({ section }) {
               }}
               transition={{
                 duration: 0.45,
-                delay: 0.15,
+                delay: 0.25,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="
@@ -229,7 +241,7 @@ export default function FutureRoadmap({ section }) {
               "
             />
 
-            {/* Horizontal branch */}
+            {/* Horizontal Branch */}
 
             <motion.div
               initial={{
@@ -244,13 +256,13 @@ export default function FutureRoadmap({ section }) {
               }}
               transition={{
                 duration: 0.55,
-                delay: 0.3,
+                delay: 0.4,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="
                 absolute
-                left-[12.5%]
-                right-[12.5%]
+                left-1/4
+right-1/4
                 top-1/2
                 h-px
                 origin-center
@@ -258,7 +270,7 @@ export default function FutureRoadmap({ section }) {
               "
             />
 
-            {/* Left branch */}
+            {/* Left Branch */}
 
             <motion.div
               initial={{
@@ -273,12 +285,12 @@ export default function FutureRoadmap({ section }) {
               }}
               transition={{
                 duration: 0.35,
-                delay: 0.7,
+                delay: 0.75,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="
                 absolute
-                left-[12.5%]
+                left-1/4
                 top-1/2
                 h-1/2
                 w-px
@@ -287,7 +299,7 @@ export default function FutureRoadmap({ section }) {
               "
             />
 
-            {/* Right branch */}
+            {/* Right Branch */}
 
             <motion.div
               initial={{
@@ -302,12 +314,12 @@ export default function FutureRoadmap({ section }) {
               }}
               transition={{
                 duration: 0.35,
-                delay: 0.7,
+                delay: 0.75,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="
                 absolute
-                right-[12.5%]
+                right-1/4
                 top-1/2
                 h-1/2
                 w-px
@@ -321,21 +333,21 @@ export default function FutureRoadmap({ section }) {
 
           <div
             className="
-              relative
-              z-10
-              mt-24
+    relative
+    z-10
+    mt-20
 
-              grid
-              grid-cols-1
-              gap-16
+    grid
+    grid-cols-1
+    gap-14
 
-              sm:mt-28
-              sm:grid-cols-2
-              sm:gap-12
+    sm:mt-24
+    sm:gap-16
 
-              lg:mt-32
-              lg:gap-24
-            "
+    lg:mt-32
+    lg:grid-cols-2
+    lg:gap-24
+  "
           >
             {/* Recommendation */}
 
@@ -354,68 +366,70 @@ export default function FutureRoadmap({ section }) {
               }}
               transition={{
                 duration: 0.5,
-                delay: 0.35,
+                delay: 0.45,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="
-                relative
-                px-2
-                pt-4
+      relative
+      min-w-0
+      px-2
+      pt-4
 
-                sm:px-4
-                sm:pt-6
-              "
+      sm:px-4
+      sm:pt-6
+
+      lg:overflow-visible
+    "
             >
-              {/* Connection Point */}
-
               <div
                 aria-hidden="true"
                 className="
-                  absolute
-                  left-1/2
-                  top-0
+    absolute
+    left-1/2
+    top-full
+    h-14
+    w-px
+    -translate-x-1/2
+    bg-border
 
-                  h-2
-                  w-2
+    sm:h-16
 
-                  -translate-x-1/2
-                  -translate-y-1/2
-
-                  rounded-full
-
-                  bg-text-primary
-
-                  shadow-[0_0_20px_rgba(255,255,255,0.35)]
-                "
+    lg:hidden
+  "
               />
-
-              <div className="max-w-xl">
+              <div
+                className="
+        min-w-0
+        overflow-visible
+      "
+              >
                 <h3
                   className="
-                    text-2xl
-                    font-semibold
-                    tracking-tight
-                    text-text-primary
+          whitespace-nowrap
+          text-base
+          font-semibold
+          tracking-tight
+          text-text-primary
 
-                    sm:text-3xl
+          sm:text-3xl
 
-                    lg:text-4xl
-                  "
+          lg:text-4xl
+        "
                 >
                   {recommendation.title}
                 </h3>
 
                 <p
                   className="
-                    mt-6
-                    text-base
-                    leading-7
-                    text-text-secondary
+          mt-6
+          text-xs
+          leading-7
+          text-text-secondary
 
-                    sm:mt-7
-                    sm:text-lg
-                    sm:leading-8
-                  "
+          sm:mt-7
+          sm:text-lg
+          sm:leading-8
+        "
                 >
                   {recommendation.description}
                 </p>
@@ -439,68 +453,46 @@ export default function FutureRoadmap({ section }) {
               }}
               transition={{
                 duration: 0.5,
-                delay: 0.45,
+                delay: 0.55,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="
-                relative
-                px-2
-                pt-4
+      relative
+      min-w-0
+      px-2
+      pt-4
 
-                sm:px-4
-                sm:pt-6
-              "
+      sm:px-4
+      sm:pt-6
+    "
             >
-              {/* Connection Point */}
-
-              <div
-                aria-hidden="true"
-                className="
-                  absolute
-                  left-1/2
-                  top-0
-
-                  h-2
-                  w-2
-
-                  -translate-x-1/2
-                  -translate-y-1/2
-
-                  rounded-full
-
-                  bg-text-primary
-
-                  shadow-[0_0_20px_rgba(255,255,255,0.35)]
-                "
-              />
-
-              <div className="max-w-xl">
+              <div className="min-w-0 overflow-visible">
                 <h3
                   className="
-                    text-2xl
-                    font-semibold
-                    tracking-tight
-                    text-text-primary
+          text-base
+          font-semibold
+          tracking-tight
+          text-text-primary
 
-                    sm:text-3xl
+          sm:text-3xl
 
-                    lg:text-4xl
-                  "
+          lg:text-4xl
+        "
                 >
                   {messaging.title}
                 </h3>
 
                 <p
                   className="
-                    mt-6
-                    text-base
-                    leading-7
-                    text-text-secondary
+          mt-6
+          text-xs
+          leading-7
+          text-text-secondary
 
-                    sm:mt-7
-                    sm:text-lg
-                    sm:leading-8
-                  "
+          sm:mt-7
+          sm:text-lg
+          sm:leading-8
+        "
                 >
                   {messaging.description}
                 </p>

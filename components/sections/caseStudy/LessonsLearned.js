@@ -3,6 +3,22 @@
 import { motion } from "framer-motion";
 
 export default function LessonsLearned({ section }) {
+  const headingVariants = {
+    hidden: {
+      opacity: 0,
+      y: 28,
+    },
+
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   return (
     <section
       aria-labelledby="lessons-learned-heading"
@@ -17,7 +33,7 @@ export default function LessonsLearned({ section }) {
         className="
           mx-auto
           w-full
-          max-w-[110rem]
+          max-w-[100rem]
           px-6
           sm:px-8
           lg:px-10
@@ -25,11 +41,20 @@ export default function LessonsLearned({ section }) {
       >
         {/* Section Header */}
 
-        <div className="max-w-3xl">
+        <motion.div
+          variants={headingVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{
+            once: true,
+            amount: 0.3,
+          }}
+          className="max-w-3xl"
+        >
           <h2
             id="lessons-learned-heading"
             className="
-              text-3xl
+              text-2xl
               font-semibold
               tracking-tight
               text-text-primary
@@ -41,7 +66,7 @@ export default function LessonsLearned({ section }) {
           >
             {section.title}
           </h2>
-        </div>
+        </motion.div>
 
         {/* Lessons */}
 
@@ -123,7 +148,8 @@ export default function LessonsLearned({ section }) {
 
                       bg-background
 
-                      text-xs
+                      text-[10px]
+                      sm:text-xs
                       font-medium
                       tabular-nums
                       tracking-[0.08em]
@@ -154,7 +180,7 @@ export default function LessonsLearned({ section }) {
                   <h3
                     className="
                       max-w-3xl
-                      text-2xl
+                      text-sm
                       font-semibold
                       leading-tight
                       tracking-tight
@@ -178,7 +204,7 @@ export default function LessonsLearned({ section }) {
                       max-w-3xl
                       space-y-5
 
-                      text-base
+                      text-xs
                       leading-7
                       text-text-secondary
 
@@ -214,7 +240,7 @@ export default function LessonsLearned({ section }) {
                   >
                     <span
                       className="
-                        text-[0.68rem]
+                        text-[10px]
                         font-medium
                         tracking-[0.2em]
                         text-text-muted
@@ -229,7 +255,7 @@ export default function LessonsLearned({ section }) {
                     <p
                       className="
                         mt-3
-                        text-base
+                        text-xs
                         font-medium
                         leading-7
                         text-text-primary

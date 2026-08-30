@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowUp } from "lucide-react";
+import { useTheme } from "next-themes";
 
 import CoreFeatures from "../sections/caseStudy/CoreFeatures";
 import EngineeringChallenges from "../sections/caseStudy/EngineeringChallenges";
@@ -12,9 +13,47 @@ import ProjectOverview from "../sections/caseStudy/ProjectOverview";
 import SystemArchitecture from "../sections/caseStudy/SystemArchitecture";
 import TechnicalStack from "../sections/caseStudy/TechnicalStack";
 import WhyIBuiltIt from "../sections/caseStudy/WhyIBuiltIt";
+import ClosingSection from "../sections/caseStudy/ClosingSection";
 
 export default function CaseStudyPage({ project }) {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const { resolvedTheme } = useTheme();
+
+  const [mounted, setMounted] = useState(false);
+
+  /* =====================================================
+     THEME
+     ===================================================== */
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && resolvedTheme === "dark";
+
+  /* =====================================================
+     RESET SCROLL POSITION
+     ===================================================== */
+
+  useEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration;
+
+    window.history.scrollRestoration = "manual";
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
+
+  /* =====================================================
+     SCROLL TO TOP VISIBILITY
+     ===================================================== */
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +71,10 @@ export default function CaseStudyPage({ project }) {
     };
   }, []);
 
+  /* =====================================================
+     SCROLL TO TOP
+     ===================================================== */
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -47,52 +90,50 @@ export default function CaseStudyPage({ project }) {
         href="/"
         aria-label="Back to portfolio"
         className="
-          fixed
-          left-5
-          top-5
-          z-50
+    group
+    absolute
+    left-4
+    top-4
+    z-50
 
-          inline-flex
-          items-center
-          gap-2
+    inline-flex
+    items-center
+    gap-1.5
 
-          rounded-full
+    text-xs
+    font-medium
+    text-text-muted
 
-          border
-          border-border
+    transition-colors
+    duration-300
 
-          bg-background/70
+    hover:text-text-primary
 
-          px-4
-          py-2.5
+    focus-visible:outline-none
+    focus-visible:ring-2
+    focus-visible:ring-text-primary/50
 
-          text-sm
-          font-medium
-          text-text-secondary
+    sm:left-7
+    sm:top-7
+    sm:gap-2
+    sm:text-sm
 
-          shadow-[0_10px_40px_rgba(0,0,0,0.18)]
-
-          backdrop-blur-xl
-
-          transition-all
-          duration-300
-
-          hover:-translate-x-0.5
-          hover:bg-surface
-          hover:text-text-primary
-
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-text-primary/50
-
-          sm:left-7
-          sm:top-7
-
-          lg:left-10
-          lg:top-8
-        "
+    lg:left-10
+    lg:top-10
+  "
       >
-        <ArrowLeft size={16} strokeWidth={1.8} />
+        <ArrowLeft
+          size={15}
+          strokeWidth={1.8}
+          className="
+      transition-transform
+      duration-300
+      group-hover:-translate-x-1
+
+      sm:h-4
+      sm:w-4
+    "
+        />
 
         <span>Back to Portfolio</span>
       </Link>
@@ -117,6 +158,8 @@ export default function CaseStudyPage({ project }) {
         <LessonsLearned section={project.sections.lessonsLearned} />
 
         <FutureRoadmap section={project.sections.futureRoadmap} />
+
+        <ClosingSection project={project.project} />
       </main>
 
       {/* Scroll To Top */}
@@ -128,55 +171,65 @@ export default function CaseStudyPage({ project }) {
         aria-hidden={!showScrollTop}
         tabIndex={showScrollTop ? 0 : -1}
         className={`
-          fixed
-          bottom-5
-          right-5
-          z-50
+    fixed
+    bottom-4
+    right-4
+    z-50
 
-          inline-flex
-          h-11
-          w-11
-          items-center
-          justify-center
+    inline-flex
+    h-10
+    w-10
+    items-center
+    justify-center
 
-          rounded-full
+    rounded-full
 
-          border
-          border-border
+    border
 
-          bg-background/70
+    shadow-[0_10px_35px_rgba(0,0,0,0.25)]
 
-          text-text-secondary
+    transition-all
+    duration-300
 
-          shadow-[0_10px_40px_rgba(0,0,0,0.20)]
+    hover:-translate-y-1
 
-          backdrop-blur-xl
+    focus-visible:outline-none
+    focus-visible:ring-2
 
-          transition-all
-          duration-300
+    ${
+      isDark
+        ? `
+          border-white/10
+          bg-white
+          text-black
+          hover:bg-white/90
+          focus-visible:ring-white/60
+        `
+        : `
+          border-black/10
+          bg-black
+          text-white
+          hover:bg-black/90
+          focus-visible:ring-black/40
+        `
+    }
 
-          hover:-translate-y-1
-          hover:bg-surface
-          hover:text-text-primary
+    sm:bottom-6
+    sm:right-6
+    sm:h-11
+    sm:w-11
 
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-text-primary/50
+    lg:bottom-8
+    lg:right-10
 
-          sm:bottom-7
-          sm:right-7
-
-          lg:bottom-8
-          lg:right-10
-
-          ${
-            showScrollTop
-              ? "translate-y-0 opacity-100"
-              : "pointer-events-none translate-y-3 opacity-0"
-          }
-        `}
+    ${
+      showScrollTop
+        ? "translate-y-0 opacity-100"
+        : "pointer-events-none translate-y-3 opacity-0"
+    }
+  `}
       >
-        <ArrowUp size={17} strokeWidth={1.8} />
+        <ArrowUp size={16} strokeWidth={1.8} />
       </button>
     </>
   );

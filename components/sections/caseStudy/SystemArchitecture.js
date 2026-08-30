@@ -1,22 +1,45 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function SystemArchitecture({ section }) {
+  const revealVariants = {
+    hidden: {
+      opacity: 0,
+      y: 28,
+    },
+
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.75,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   return (
-    <section
+    <motion.section
       aria-labelledby="system-architecture-heading"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{
+        once: true,
+        amount: 0.15,
+      }}
       className="
         relative
         py-24
         sm:py-28
         lg:py-32
-        my-16
+        lg:my-32
       "
     >
       <div
         className="
           mx-auto
           w-full
-          max-w-[110rem]
+          max-w-[100rem]
           px-6
           sm:px-8
           lg:px-10
@@ -24,11 +47,11 @@ export default function SystemArchitecture({ section }) {
       >
         {/* Section Header */}
 
-        <div className="max-w-2xl">
+        <motion.div variants={revealVariants} className="max-w-2xl">
           <h2
             id="system-architecture-heading"
             className="
-              text-3xl
+              text-2xl
               font-semibold
               tracking-tight
               text-text-primary
@@ -40,12 +63,28 @@ export default function SystemArchitecture({ section }) {
           >
             {section.title}
           </h2>
-        </div>
+        </motion.div>
 
         {/* Architecture Diagram */}
 
-        <div className="relative mt-12 sm:mt-16 lg:mt-20">
-          {/* Aggressive background glow */}
+        <motion.div
+          variants={revealVariants}
+          transition={{
+            duration: 0.8,
+            delay: 0.12,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="
+    relative
+    mt-12
+    sm:mt-16
+    lg:mt-20
+
+    lg:mx-auto
+    lg:w-[88%]
+  "
+        >
+          {/* Ambient Background Glow */}
 
           <div
             aria-hidden="true"
@@ -74,8 +113,6 @@ export default function SystemArchitecture({ section }) {
               relative
               z-10
               overflow-hidden
-
-              rounded-2xl
               border
               border-white/[0.10]
 
@@ -99,8 +136,8 @@ export default function SystemArchitecture({ section }) {
               "
             />
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

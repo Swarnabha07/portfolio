@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
@@ -10,21 +11,43 @@ export default function EngineeringChallenges({ section }) {
     setOpenIndex((current) => (current === index ? null : index));
   };
 
+  const revealVariants = {
+    hidden: {
+      opacity: 0,
+      y: 28,
+    },
+
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   return (
-    <section
+    <motion.section
       aria-labelledby="engineering-challenges-heading"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{
+        once: true,
+        amount: 0.12,
+      }}
       className="
         relative
         py-24
         sm:py-28
-        lg:py-32
+        lg:my-32
       "
     >
       <div
         className="
           mx-auto
           w-full
-          max-w-[110rem]
+          max-w-[100rem]
           px-6
           sm:px-8
           lg:px-10
@@ -32,11 +55,11 @@ export default function EngineeringChallenges({ section }) {
       >
         {/* Section Header */}
 
-        <div className="max-w-3xl">
+        <motion.div variants={revealVariants} className="max-w-3xl">
           <h2
             id="engineering-challenges-heading"
             className="
-              text-3xl
+              text-2xl
               font-semibold
               tracking-tight
               text-text-primary
@@ -48,11 +71,17 @@ export default function EngineeringChallenges({ section }) {
           >
             {section.title}
           </h2>
-        </div>
+        </motion.div>
 
         {/* Questions */}
 
-        <div
+        <motion.div
+          variants={revealVariants}
+          transition={{
+            duration: 0.75,
+            delay: 0.12,
+            ease: [0.22, 1, 0.36, 1],
+          }}
           className="
             mt-12
             border-t
@@ -99,28 +128,12 @@ export default function EngineeringChallenges({ section }) {
                   "
                 >
                   <div className="flex min-w-0 items-start gap-5">
-                    {/* Question Number */}
-
-                    {/* <span
-                      aria-hidden="true"
-                      className="
-                        pt-1
-                        text-xs
-                        font-medium
-                        tabular-nums
-                        tracking-[0.15em]
-                        text-text-muted
-                      "
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </span> */}
-
                     {/* Question Text */}
 
                     <span
                       className="
                         max-w-4xl
-                        text-lg
+                        text-sm
                         font-medium
                         leading-7
                         text-text-primary
@@ -229,7 +242,7 @@ export default function EngineeringChallenges({ section }) {
                             max-w-4xl
                             space-y-5
 
-                            text-base
+                            text-xs
                             leading-7
                             text-text-secondary
 
@@ -253,31 +266,31 @@ export default function EngineeringChallenges({ section }) {
                               <div key={subsectionIndex}>
                                 <h3
                                   className="
-                                  text-base
-                                  font-medium
-                                  tracking-tight
-                                  text-text-primary
+                                    text-xs
+                                    font-medium
+                                    tracking-tight
+                                    text-text-primary
 
-                                  sm:text-lg
-                                "
+                                    sm:text-lg
+                                  "
                                 >
                                   {subsection.title}
                                 </h3>
 
                                 <div
                                   className="
-                                  mt-3
-                                  space-y-4
+                                    mt-3
+                                    space-y-4
 
-                                  text-base
-                                  leading-7
-                                  text-text-secondary
+                                    text-[10px]
+                                    leading-7
+                                    text-text-secondary
 
-                                  sm:mt-4
-                                  sm:space-y-5
-                                  sm:text-lg
-                                  sm:leading-8
-                                "
+                                    sm:mt-4
+                                    sm:space-y-5
+                                    sm:text-lg
+                                    sm:leading-8
+                                  "
                                 >
                                   {subsection.paragraphs.map(
                                     (paragraph, paragraphIndex) => (
@@ -296,8 +309,8 @@ export default function EngineeringChallenges({ section }) {
               </article>
             );
           })}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -95,21 +95,37 @@ export default function CoreFeatures({ section }) {
   };
 
   return (
-    <section
+    <motion.section
       aria-labelledby="core-features-heading"
+      initial={{
+        opacity: 0,
+        y: 32,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.15,
+      }}
+      transition={{
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className="
         relative
         py-24
         sm:py-28
         lg:py-32
-        my-16
+        lg:my-32
       "
     >
       <div
         className="
           mx-auto
           w-full
-          max-w-[110rem]
+          max-w-[100rem]
           px-6
           sm:px-8
           lg:px-10
@@ -121,7 +137,7 @@ export default function CoreFeatures({ section }) {
           <h2
             id="core-features-heading"
             className="
-              text-3xl
+              text-2xl
               font-semibold
               tracking-tight
               text-text-primary
@@ -174,7 +190,7 @@ export default function CoreFeatures({ section }) {
 
           {/* Lower Glow */}
 
-          <div
+          {/* <div
             aria-hidden="true"
             className="
               pointer-events-none
@@ -194,51 +210,44 @@ export default function CoreFeatures({ section }) {
 
               blur-[90px]
             "
-          />
+          /> */}
 
-          {/* Fixed-height Card */}
+          {/* Feature Container */}
 
           <div
             className="
-    relative
-    z-10
-    mx-auto
+              relative
+              z-10
+              mx-auto
 
-    h-[600px]
-    w-full
-    max-w-4xl
+              h-[600px]
+              w-full
 
-    touch-pan-y
-    select-none
+              touch-pan-y
+              select-none
 
-    overflow-hidden
+              overflow-hidden
 
-    rounded-3xl
+              rounded-3xl
 
-    border
-    border-white/[0.10]
+              px-7
+              py-8
 
-    bg-white/[0.035]
 
-    px-7
-    py-8
+              backdrop-blur-xl
 
-    shadow-[0_30px_100px_rgba(0,0,0,0.30)]
+              sm:h-[580px]
+              sm:px-10
+              sm:py-10
 
-    backdrop-blur-xl
-
-    sm:h-[580px]
-    sm:px-10
-    sm:py-10
-
-    lg:h-[560px]
-    lg:px-14
-    lg:py-12
-  "
+              lg:h-[560px]
+              lg:px-14
+              lg:py-12
+            "
           >
             {/* Inner Highlight */}
 
-            <div
+            {/* <div
               aria-hidden="true"
               className="
                 pointer-events-none
@@ -248,7 +257,7 @@ export default function CoreFeatures({ section }) {
 
                 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.07),transparent_45%)]
               "
-            />
+            /> */}
 
             {/* Animated Card Content */}
 
@@ -293,6 +302,7 @@ export default function CoreFeatures({ section }) {
                   <span
                     className="
                       text-xs
+                      sm:text-sm
                       font-medium
                       tracking-[0.2em]
                       text-text-muted
@@ -304,7 +314,8 @@ export default function CoreFeatures({ section }) {
 
                   <span
                     className="
-                      text-sm
+                      text-xs
+                      sm:text-sm
                       font-medium
                       tabular-nums
                       text-text-muted
@@ -317,7 +328,7 @@ export default function CoreFeatures({ section }) {
 
                 {/* Divider */}
 
-                <div
+                {/* <div
                   className="
                     mt-6
                     h-px
@@ -325,7 +336,7 @@ export default function CoreFeatures({ section }) {
                     shrink-0
                     bg-border/70
                   "
-                />
+                /> */}
 
                 {/* Feature Content */}
 
@@ -339,7 +350,7 @@ export default function CoreFeatures({ section }) {
                 >
                   <h3
                     className="
-                      text-2xl
+                      text-xl
                       font-semibold
                       tracking-tight
                       text-text-primary
@@ -357,7 +368,7 @@ export default function CoreFeatures({ section }) {
                       mt-7
                       space-y-4
 
-                      text-base
+                      text-sm
                       leading-7
                       text-text-secondary
 
@@ -527,6 +538,6 @@ export default function CoreFeatures({ section }) {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

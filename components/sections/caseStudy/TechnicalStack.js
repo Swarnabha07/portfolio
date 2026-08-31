@@ -56,7 +56,6 @@ export default function TechnicalStack({ section }) {
         py-20
         sm:py-24
         lg:py-32
-        lg:my-32
       "
     >
       <div

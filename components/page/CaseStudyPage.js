@@ -140,7 +140,7 @@ export default function CaseStudyPage({ project }) {
 
       {/* Case Study Content */}
 
-      <main>
+      <main className="overflow-x-clip">
         <ProjectOverview project={project.project} />
 
         <WhyIBuiltIt section={project.sections.whyIBuiltIt} />

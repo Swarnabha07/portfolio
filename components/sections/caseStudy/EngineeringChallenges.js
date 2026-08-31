@@ -40,7 +40,6 @@ export default function EngineeringChallenges({ section }) {
         relative
         py-24
         sm:py-28
-        lg:my-32
       "
     >
       <div

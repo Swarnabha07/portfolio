@@ -118,7 +118,6 @@ export default function CoreFeatures({ section }) {
         py-24
         sm:py-28
         lg:py-32
-        lg:my-32
       "
     >
       <div

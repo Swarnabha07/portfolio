@@ -181,29 +181,29 @@ export default function ProjectOverview({ project }) {
               PROJECT IMAGE
               ===================================================== */}
 
-         <div
-  className={`relative z-10 ${
-    !isDark ? "shadow-[0_30px_100px_rgba(0,0,0,0.25)]" : ""
-  }`}
->
-  <Image
-    src={project.image}
-    alt={`${project.name} project overview`}
-    width={1600}
-    height={1000}
-    sizes="
+          <div
+            className={`relative z-10 ${
+              !isDark ? "shadow-[0_30px_100px_rgba(0,0,0,0.25)]" : ""
+            }`}
+          >
+            <Image
+              src={project.image}
+              alt={`${project.name} project overview`}
+              width={1600}
+              height={1000}
+              sizes="
       (max-width: 1024px) 100vw,
       60vw
     "
-    className="
+              className="
       block
       h-auto
       w-full
       object-contain
     "
-    priority
-  />
-</div>
+              priority
+            />
+          </div>
         </motion.div>
       </div>
     </section>

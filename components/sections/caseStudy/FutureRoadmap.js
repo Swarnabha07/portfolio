@@ -11,11 +11,9 @@ export default function FutureRoadmap({ section }) {
       className="
         relative
         overflow-hidden
-        py-28
-
-        sm:py-32
-
-        lg:py-40
+         py-24
+        sm:py-28
+        lg:py-26
       "
     >
       <div

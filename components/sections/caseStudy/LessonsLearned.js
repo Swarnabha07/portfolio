@@ -26,7 +26,7 @@ export default function LessonsLearned({ section }) {
         relative
         py-24
         sm:py-28
-        lg:py-32
+        lg:py-26
       "
     >
       <div

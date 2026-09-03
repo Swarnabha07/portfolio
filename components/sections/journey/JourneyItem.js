@@ -27,7 +27,7 @@ export default function JourneyItem({ item, index }) {
         once: true,
         amount: 0.2,
       }}
-      className="relative grid min-h-[180px] grid-cols-[16px_1fr] gap-6 sm:min-h-[220px] sm:grid-cols-[1fr_16px_1fr] sm:gap-8 lg:min-h-[240px] lg:gap-12"
+      className="relative grid min-h-[180px] grid-cols-[16px_1fr] gap-6 sm:min-h-[220px] sm:grid-cols-[1fr_16px_1fr] sm:gap-8 lg:min-h-[240px] lg:gap-12 py-4"
     >
       {/* =====================================================
           LEFT CONTENT — DESKTOP

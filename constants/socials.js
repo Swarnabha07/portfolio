@@ -8,3 +8,12 @@ export const SOCIAL_LINKS = [
     href: "https://www.linkedin.com/in/swarnabha-banerjee-37b6ab331/",
   },
 ];
+
+export const contactLinks = [
+  ...SOCIAL_LINKS,
+  {
+    label: "Download Resume",
+    href: "/resume.pdf",
+    download: true,
+  },
+];

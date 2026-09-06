@@ -1,41 +1,35 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function ToolkitHeader() {
   return (
-    <div className="mb-14 lg:mb-16">
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{
+        duration: 0.6,
+        ease: "easeOut",
+      }}
+      className="mb-14 lg:mb-16"
+    >
       {/* Section Label */}
-
       <span
         id="toolkit-heading"
-        className="
-          text-sm
-          md:text-xl
-          font-semibold
-          uppercase
-          tracking-[0.28em]
-          text-text-muted
-        "
+        className="text-sm font-semibold uppercase tracking-[0.28em] text-text-muted md:text-xl"
       >
-        Developer's Toolkit
+        Developer&apos;s Toolkit
       </span>
 
       {/* Section Divider */}
       <div aria-hidden="true" className="mt-5 h-px w-full bg-border" />
 
       {/* Supporting Text */}
-
-      <p
-        className="
-          mt-6
-          max-w-2xl
-          text-base
-          leading-8
-          text-text-secondary
-
-          sm:text-lg
-        "
-      >
+      <p className="mt-6 max-w-2xl text-base leading-8 text-text-secondary sm:text-lg">
         A curated collection of the frameworks, services, and development tools
         I rely on to build scalable, production-ready web applications.
       </p>
-    </div>
+    </motion.div>
   );
 }

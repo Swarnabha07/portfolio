@@ -12,8 +12,9 @@ export const SOCIAL_LINKS = [
 export const contactLinks = [
   ...SOCIAL_LINKS,
   {
-    label: "Download Resume",
-    href: "/resume.pdf",
-    download: true,
+    label: "View Resume",
+    href: "/Swarnabha-Banerjee_Resume.pdf",
+    target: "_blank",
+    rel: "noopener noreferrer",
   },
 ];

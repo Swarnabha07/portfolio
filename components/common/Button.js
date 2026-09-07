@@ -32,6 +32,7 @@ export default function Button({
   variant = "primary",
   icon,
   className = "",
+  download,
 }) {
   return (
     <motion.div
@@ -47,6 +48,7 @@ export default function Button({
     >
       <Link
         href={href}
+        download={download}
         className={`
           inline-flex
           items-center

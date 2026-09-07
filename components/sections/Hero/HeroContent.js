@@ -126,8 +126,8 @@ export default function HeroContent() {
         "
       >
         Building production-oriented full-stack web applications with modern
-        JavaScript technologies, focusing on scalable architecture, clean code,
-        and thoughtful user experiences.
+        JavaScript technologies, focusing on scalable architecture, shipping
+        reliable software, and thoughtful user experiences.
       </motion.p>
 
       {/* CTA */}

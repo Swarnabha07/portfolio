@@ -25,7 +25,12 @@ export default function HeroActions() {
         View Projects
       </Button>
 
-      <Button href="/resume.pdf" variant="secondary" icon={<Download size={18} />}>
+      <Button
+        href="/Swarnabha-Banerjee_Resume.pdf"
+        download="Swarnabha-Banerjee_Resume.pdf"
+        variant="secondary"
+        icon={<Download size={18} />}
+      >
         Download Resume
       </Button>
     </div>

@@ -1,10 +1,10 @@
 export const ABOUT = {
   paragraphs: [
-    `I'm Swarnabha Banerjee, a Full-Stack Web Developer currently pursuing Computer Applications. I enjoy building production-oriented web applications that combine intuitive user experiences with scalable backend architecture and thoughtful engineering.`,
+    `I'm Swarnabha Banerjee, a Full-Stack Web Developer currently pursuing Computer Applications. I build and ship full-stack web applications with a focus on application architecture, reliable data flows, and the engineering decisions that make a product work beyond the interface.`,
 
-    `I enjoy solving real-world problems through clean, maintainable software while continuously exploring modern technologies and development practices. My focus is on creating applications that balance usability, performance, and long-term maintainability.`,
+    `My work spans the complete development lifecycle—from structuring frontend and backend systems and designing API-driven workflows to implementing authentication, data persistence, background processing, and security-conscious application logic. I focus on understanding how different parts of an application interact and building systems that remain reliable as their complexity grows.`,
 
-    `I'm currently seeking internship opportunities where I can contribute to meaningful products, collaborate with experienced engineers, and continue growing through real-world software development.`,
+    `I'm currently seeking Software Engineering Internship opportunities where I can contribute to meaningful products, collaborate with experienced engineers, and continue growing through real-world software development.`,
   ],
 
   currentlyExploring: [

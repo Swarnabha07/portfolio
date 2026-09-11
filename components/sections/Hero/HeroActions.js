@@ -1,6 +1,6 @@
 "use client";
 
-import { Download, ArrowRight, Folder } from "lucide-react";
+import { ArrowDown, ArrowRight, Folder } from "lucide-react";
 
 import Button from "@/components/common/Button";
 
@@ -25,14 +25,18 @@ export default function HeroActions() {
         View Projects
       </Button>
 
-      <Button
+      <Button href="#about" variant="secondary" icon={<ArrowDown size={18} />}>
+        Know more about me
+      </Button>
+
+      {/* <Button
         href="/Swarnabha-Banerjee_Resume.pdf"
         download="Swarnabha-Banerjee_Resume.pdf"
         variant="secondary"
         icon={<Download size={18} />}
       >
         Download Resume
-      </Button>
+      </Button> */}
     </div>
   );
 }

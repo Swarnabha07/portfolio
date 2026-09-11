@@ -47,7 +47,7 @@ export default function HeroContent() {
       "
     >
       {/* Availability */}
-      <motion.div variants={itemVariants}>
+      {/* <motion.div variants={itemVariants}>
         <span
           className="
             inline-flex
@@ -77,7 +77,7 @@ export default function HeroContent() {
           />
           Available for Internships & Opportunities
         </span>
-      </motion.div>
+      </motion.div> */}
 
       {/* Name */}
       <motion.h1
